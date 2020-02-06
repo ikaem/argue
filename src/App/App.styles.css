@@ -1,0 +1,42 @@
+/* variables */
+:root {
+    --primaryColor: #ecce6d;
+    --secondaryColor: #434e52;
+}
+
+/* reset */
+body {
+    margin: 0 auto;
+    padding: 0;
+}
+
+p, a, ul, li {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+}
+li {
+    list-style-type: none;
+}
+
+/* base styles */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+
+/* fonts */
+
+/* mobile styles */
+
+
+/* small tablet styles */
+@media screen and (min-width: 620px){
+
+}
+
+/* large tablets and laptops styles */
+@media screen and (min-width: 960px){
+    
+}

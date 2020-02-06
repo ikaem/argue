@@ -1,0 +1,15 @@
+.replies {
+    grid-column: 4 / 5;
+    grid-row: 4 / 5;
+    color: green;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    padding: 5px;
+    margin: 0;
+    position: relative;
+}
+.scrollingReplies {
+    position: sticky;
+    top: 5px;
+}
