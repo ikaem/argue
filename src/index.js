@@ -3,8 +3,6 @@ import ReactDOM from 'react-dom';
 import {BrowserRouter as Router} from "react-router-dom";
 
 import './index.css';
-import ReplyContextProvider from './contexts/ReplyContext';
-
 
 import App from "./App/App"
 import * as serviceWorker from './serviceWorker';
