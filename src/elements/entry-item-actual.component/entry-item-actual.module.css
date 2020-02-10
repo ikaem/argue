@@ -1,12 +1,12 @@
-.postActual {
+.entryItemActual {
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
 }
-.postContent {
+.entryItemContent {
     width: 100%;
 }
-.postButtons {
+.entryItemButtons {
     display: flex;
     justify-content: flex-end;
 }

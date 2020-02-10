@@ -1,12 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 
 import classes from "./reply-item.module.css";
 import notify from "../../../../../../../../utils/notify";
+import { UserContext } from "../../../../../../../../contexts/UserContext";
 
 import ReplyActual from "./reply-actual.component/reply-actual.component";
 import EditReply from "./edit-reply.container/edit-reply.container";
+import EntryItemActual from "../../../../../../../../elements/entry-item-actual.component/entry-item-actual.component";
 
 const ReplyItem = ({reply, setFetchRepliesTrigger}) => {
+    const { loggedUser } = useContext(UserContext);
     const { id } = reply;
     const [isReplyForEdit, setIsReplyForEdit] = useState(false);
     const [isDeleteReplyBoxOpen, setIsDeleteReplyBoxOpen] = useState(false);
@@ -28,7 +31,6 @@ const ReplyItem = ({reply, setFetchRepliesTrigger}) => {
                 },
             });
             const parsedDeleteReplyResponse = await deleteReplyResponse.json();
-            console.log(parsedDeleteReplyResponse);
             if(parsedDeleteReplyResponse.message !== "reply deleted successfully") throw new Error(parsedDeleteReplyResponse.message);
             setFetchRepliesTrigger(prevTrigger => prevTrigger + 1);
             notify(parsedDeleteReplyResponse.message, "success");
@@ -47,15 +49,26 @@ const ReplyItem = ({reply, setFetchRepliesTrigger}) => {
                 editUneditReply={editUneditReply}
                 setFetchRepliesTrigger={setFetchRepliesTrigger}
             />:
-            <ReplyActual
-                reply={reply}
-                editUneditReply={editUneditReply}
-                openCloseDeleteReplyBox={openCloseDeleteReplyBox}
-                isDeleteReplyBoxOpen={isDeleteReplyBoxOpen}
-                deleteReply={deleteReply}
+            <EntryItemActual
+                entryItem={reply}
+                editUneditEntryItem={editUneditReply}
+                openCloseDeleteBox={openCloseDeleteReplyBox}
+                isDeleteBoxOpen={isDeleteReplyBoxOpen}
+                deleteEntryItem={deleteReply}
+                loggedUser={loggedUser}
             />
         }
     </li>
     )
 }
 export default ReplyItem;
+
+/* 
+<ReplyActual
+    reply={reply}
+    editUneditReply={editUneditReply}
+    openCloseDeleteReplyBox={openCloseDeleteReplyBox}
+    isDeleteReplyBoxOpen={isDeleteReplyBoxOpen}
+    deleteReply={deleteReply}
+/>
+*/

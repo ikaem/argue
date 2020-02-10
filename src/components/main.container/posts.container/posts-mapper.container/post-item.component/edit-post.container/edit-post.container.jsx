@@ -3,7 +3,7 @@ import React, { useState, useContext } from "react";
 import classes from "./edit-post.module.css";
 import notify from "../../../../../../utils/notify";
 
-import EditPostForm from "./edit-post-form.component/edit-post-form.component";
+import EditEntryItemForm from "./../../../../../../elements/edit-entry-item-form.component/edit-entry-item-form.component";
 
 const EditPost = ({post, editUneditPost, setFetchPostsTrigger}) => {
     const { id, text } = post;
@@ -42,11 +42,11 @@ const EditPost = ({post, editUneditPost, setFetchPostsTrigger}) => {
     }
     return (
     <>
-        <EditPostForm
+        <EditEntryItemForm
             textForUpdate={textForUpdate}
             isCancelEditBoxOpen={isCancelEditBoxOpen}
             openCloseCancelEditBox={openCloseCancelEditBox}
-            editUneditPost={editUneditPost}
+            editUneditEntryItem={editUneditPost}
             handleChange={handleChange}
             handleSubmit={handleSubmit}
         />
@@ -54,3 +54,15 @@ const EditPost = ({post, editUneditPost, setFetchPostsTrigger}) => {
     )
 }
 export default EditPost;
+
+
+/* 
+<EditPostForm
+    textForUpdate={textForUpdate}
+    isCancelEditBoxOpen={isCancelEditBoxOpen}
+    openCloseCancelEditBox={openCloseCancelEditBox}
+    editUneditPost={editUneditPost}
+    handleChange={handleChange}
+    handleSubmit={handleSubmit}
+/>
+*/

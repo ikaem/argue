@@ -1,0 +1,11 @@
+.newEntryItemForm {
+    display: flex;
+    flex-direction: column;
+}
+.newEntryItemButtons {
+    display: flex;
+    justify-content: flex-end;
+}
+.pushMarginRightButton {
+    margin-right: auto;
+}

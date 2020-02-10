@@ -3,7 +3,9 @@ import React, { useState, useEffect } from "react";
 import classes from "./posts.module.css";
 import notify from "../../../utils/notify";
 
+import EntryItemsMapper from "../../../elements/entry-items-mapper.component/entry-items-mapper.component";
 import PostsMapper from "./posts-mapper.container/posts-mapper.container";
+import EntryItemsPages from "../../../elements/entry-items-pages.component/entry-items-pages.component";
 import PostsPages from "./posts-pages.component/posts-pages.component";
 
 const Posts = ({fetchPostsTrigger, setFetchPostsTrigger}) => {
@@ -31,11 +33,11 @@ const Posts = ({fetchPostsTrigger, setFetchPostsTrigger}) => {
 
     return (
     <section className={classes.posts}>
-        <PostsMapper
+        <EntryItemsMapper
             posts={posts}
             setFetchPostsTrigger={setFetchPostsTrigger}
         />
-        <PostsPages
+        <EntryItemsPages
             pagesArray={Array(pagesNumber).fill().map((v, i) => v = i + 1)}
             currentPage={currentPage}
             setCurrentPage={setCurrentPage}
@@ -45,3 +47,17 @@ const Posts = ({fetchPostsTrigger, setFetchPostsTrigger}) => {
 }
 
 export default Posts;
+
+/* 
+<PostsMapper
+    posts={posts}
+    setFetchPostsTrigger={setFetchPostsTrigger}
+/>
+*/
+/* 
+<PostsPages
+    pagesArray={Array(pagesNumber).fill().map((v, i) => v = i + 1)}
+    currentPage={currentPage}
+    setCurrentPage={setCurrentPage}
+/> 
+*/

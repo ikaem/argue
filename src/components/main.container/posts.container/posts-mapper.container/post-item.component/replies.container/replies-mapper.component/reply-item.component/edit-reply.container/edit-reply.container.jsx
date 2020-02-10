@@ -3,11 +3,11 @@ import React, { useState } from "react";
 import classes from "./edit-reply.module.css";
 import notify from "../../../../../../../../../utils/notify";
 
-import EditReplyForm from "./edit-reply-form.component/edit-reply-form.component";
+import EditEntryItemForm from "../../../../../../../../../elements/edit-entry-item-form.component/edit-entry-item-form.component";
 
 const EditReply = ({reply, editUneditReply, setFetchRepliesTrigger}) => {
-    const { id, replyText } = reply;
-    const [replyTextForUpdate, setReplyTextForUpdate] = useState(replyText);
+    const { id, text } = reply;
+    const [replyTextForUpdate, setReplyTextForUpdate] = useState(text);
     const [isCancelEditReplyBoxOpen, setIsCancelEditReplyBoxOpen] = useState(false);
 
     const openCloseCancelEditReplyBox = () => {
@@ -41,11 +41,11 @@ const EditReply = ({reply, editUneditReply, setFetchRepliesTrigger}) => {
     }
     return (
     <>
-        <EditReplyForm
-            replyTextForUpdate={replyTextForUpdate}
-            isCancelEditReplyBoxOpen={isCancelEditReplyBoxOpen}
-            openCloseCancelEditReplyBox={openCloseCancelEditReplyBox}
-            editUneditReply={editUneditReply}
+        <EditEntryItemForm
+            textForUpdate={replyTextForUpdate}
+            isCancelEditBoxOpen={isCancelEditReplyBoxOpen}
+            openCloseCancelEditBox={openCloseCancelEditReplyBox}
+            editUneditEntryItem={editUneditReply}
             handleChange={handleChange}
             handleSubmit={handleSubmit}
         />
@@ -53,3 +53,15 @@ const EditReply = ({reply, editUneditReply, setFetchRepliesTrigger}) => {
     )
 }
 export default EditReply;
+
+
+/* 
+<EditReplyForm
+    replyTextForUpdate={replyTextForUpdate}
+    isCancelEditReplyBoxOpen={isCancelEditReplyBoxOpen}
+    openCloseCancelEditReplyBox={openCloseCancelEditReplyBox}
+    editUneditReply={editUneditReply}
+    handleChange={handleChange}
+    handleSubmit={handleSubmit}
+/>
+*/

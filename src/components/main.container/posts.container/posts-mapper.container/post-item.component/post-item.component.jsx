@@ -1,14 +1,18 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 
 import classes from "./post-item.module.css";
 import notify from "../../../../../utils/notify";
+import { UserContext } from "../../../../../contexts/UserContext";
 
 import PostActual from "./post-actual.component/post-actual.component";
 import EditPost from "./edit-post.container/edit-post.container";
 import Replies from "./replies.container/replies.container";
+import EntryItemActual from "../../../../../elements/entry-item-actual.component/entry-item-actual.component";
+import ReplyShowReplies from "../../../../../elements/reply-show-replies.component/reply-show-replies.component";
 
 const PostItem = ({post, setFetchPostsTrigger}) => {
-    const { id } = post;
+    const { loggedUser } = useContext(UserContext);
+    const { id, author } = post;
     const [isPostForEdit, setIsPostForEdit] = useState(false);
     const [isRepliesOpen, setIsRepliesOpen] = useState(false);
     const [isDeleteBoxOpen, setIsDeleteBoxOpen] = useState(false);
@@ -51,14 +55,19 @@ const PostItem = ({post, setFetchPostsTrigger}) => {
                 editUneditPost={editUneditPost}
                 setFetchPostsTrigger={setFetchPostsTrigger}
             />: 
-            <PostActual 
-                post={post}
-                editUneditPost={editUneditPost}
-                openCloseReplies={openCloseReplies}
+            <EntryItemActual 
+                entryItem={post}
+                editUneditEntryItem={editUneditPost}
                 openCloseDeleteBox={openCloseDeleteBox}
                 isDeleteBoxOpen={isDeleteBoxOpen}
-                deletePost={deletePost}
-            />
+                deleteEntryItem={deletePost}
+                loggedUser={loggedUser}>
+                <ReplyShowReplies
+                    openCloseReplies={openCloseReplies}
+                    name={loggedUser.name}
+                    author={post.author}
+                />
+            </EntryItemActual>
         }
         {isRepliesOpen && 
             <Replies postId={post.id}/>
@@ -67,3 +76,17 @@ const PostItem = ({post, setFetchPostsTrigger}) => {
     )
 }
 export default PostItem;
+
+
+/* 
+
+<PostActual 
+    post={post}
+    editUneditPost={editUneditPost}
+    openCloseReplies={openCloseReplies}
+    openCloseDeleteBox={openCloseDeleteBox}
+    isDeleteBoxOpen={isDeleteBoxOpen}
+    deletePost={deletePost}
+/>
+
+*/

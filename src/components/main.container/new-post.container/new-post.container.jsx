@@ -5,6 +5,7 @@ import notify from "../../../utils/notify";
 import { UserContext } from "../../../contexts/UserContext";
 
 import NewPostForm from "./new-post-form.component/new-post-form.component";
+import NewEntryItemForm from "../../../elements/new-entry-item-form.component/new-entry-item-form.component";
 
 const NewPost = ({setFetchPostsTrigger}) => {
     const { loggedUser } = useContext(UserContext);
@@ -50,16 +51,29 @@ const NewPost = ({setFetchPostsTrigger}) => {
     return (
     <section className={classes.newPost}>
         <h1>Welcome <span className={classes.userName}>{loggedUser.name || "Guest"}!</span></h1>
-        {loggedUser.id? <NewPostForm
-            newPost={newPost}
-            isCancelPostBoxOpen={isCancelPostBoxOpen}
-            openCloseCancelPostBox={openCloseCancelPostBox}
-            cancelPost={cancelPost}
+        {loggedUser.id? 
+        (<NewEntryItemForm
+            newEntryItem={newPost}
+            isCancelBoxOpen={isCancelPostBoxOpen}
+            openCloseCancelBox={openCloseCancelPostBox}
+            cancelNewEntryItem={cancelPost}
             handleChange={handleChange}
             handleSubmit={handleSubmit}
-        />: <p>Please login to post and reply</p>}
+        />): 
+        <p>Please login to post and reply</p>}
     </section>
     )
 }
 
 export default NewPost;
+
+/* 
+<NewPostForm
+    newPost={newPost}
+    isCancelPostBoxOpen={isCancelPostBoxOpen}
+    openCloseCancelPostBox={openCloseCancelPostBox}
+    cancelPost={cancelPost}
+    handleChange={handleChange}
+    handleSubmit={handleSubmit}
+/>
+*/

@@ -20,8 +20,37 @@ const PostActual = ({ post, editUneditPost, openCloseReplies, openCloseDeleteBox
                 {dateEdited && <span> | edited {new Date(dateEdited).toDateString().slice(4)}</span>}
             </p>
             <p className={classes.postText}>{text}</p>
+
+            <div className={classes.postButtons}>
+                {isDeleteBoxOpen && <>
+                    <p>Delete Post?</p>
+                    <button onClick={deletePost}>Yes</button>
+                    <button
+                        className={classes.pushMarginRightButton}
+                        onClick={openCloseDeleteBox}
+                    >No</button>
+                </>}
+                {!isDeleteBoxOpen && loggedUser.name === author &&
+                    <button
+                        onClick={openCloseDeleteBox}
+                        >Delete
+                    </button>
+                }
+                {loggedUser.name === author && <button onClick={editUneditPost}>Edit</button>}
+                <button onClick={openCloseReplies}>3 Replies</button>
+                {loggedUser.name === author && <button onClick={openCloseReplies}>Reply</button>}
+            </div>
             
-            {isDeleteBoxOpen && 
+
+        </div>
+    </article>
+    )
+}
+export default PostActual;
+
+
+
+            {/* {isDeleteBoxOpen && 
                 <div className={classes.postDeleteConfirm}>
                     <span>Delete Post and All Replies?</span>
                     <button onClick={deletePost}>Yes</button>
@@ -30,16 +59,10 @@ const PostActual = ({ post, editUneditPost, openCloseReplies, openCloseDeleteBox
             }
 
             <div className={classes.postActions}>
-                {/* author and loggeduser.name will need to be replaced with ids eventually */}
                 {!isDeleteBoxOpen && loggedUser.name === author &&
                     <button onClick={openCloseDeleteBox}>Delete</button>
                 }
                 {loggedUser.name === author && <button onClick={editUneditPost}>Edit</button>}
                 <button onClick={openCloseReplies}>3 Replies</button>
                 {loggedUser.name === author && <button onClick={openCloseReplies}>Reply</button>}
-            </div>
-        </div>
-    </article>
-    )
-}
-export default PostActual;
+            </div> */}

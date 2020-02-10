@@ -5,7 +5,9 @@ import notify from "../../../../../../utils/notify";
 import { UserContext } from "../../../../../../contexts/UserContext";
 
 import NewReply from "./new-reply.container/new-reply.container";
+import EntryItemsMapper from "../../../../../../elements/entry-items-mapper.component/entry-items-mapper.component";
 import RepliesMapper from "./replies-mapper.component/replies-mapper.component";
+import EntryItemsPages from "../../../../../../elements/entry-items-pages.component/entry-items-pages.component";
 import RepliesPages from "./replies-pages.component/replies-pages.component";
 
 const Replies = ({postId}) => {
@@ -30,24 +32,38 @@ const Replies = ({postId}) => {
             }
         }
         fetchReplies();
-    }, [setReplies, fetchRepliesTrigger, currentRepliesPage]);
+    }, [fetchRepliesTrigger, currentRepliesPage, postId]);
 
     return (
     <div className={classes.replies}>
         {loggedUser.id && <NewReply
-            postid={postId}
+            postId={postId}
             setFetchRepliesTrigger={setFetchRepliesTrigger}
         />}
-        <RepliesMapper
+        <EntryItemsMapper
             replies={replies}
             setFetchRepliesTrigger={setFetchRepliesTrigger}
         />
-        <RepliesPages
-            repliesPagesArray={Array(repliesPagesNumber).fill().map((v, i) => v = i + 1)}
-            currentRepliesPage={currentRepliesPage}
-            setCurrentRepliesPage={setCurrentRepliesPage}
+        <EntryItemsPages
+            pagesArray={Array(repliesPagesNumber).fill().map((v, i) => v = i + 1)}
+            currentPage={currentRepliesPage}
+            setCurrentPage={setCurrentRepliesPage}
         />
     </div>
     )
 }
 export default Replies;
+
+/* 
+<RepliesMapper
+    replies={replies}
+    setFetchRepliesTrigger={setFetchRepliesTrigger}
+/>
+*/
+/* 
+<RepliesPages
+    repliesPagesArray={Array(repliesPagesNumber).fill().map((v, i) => v = i + 1)}
+    currentRepliesPage={currentRepliesPage}
+    setCurrentRepliesPage={setCurrentRepliesPage}
+/>
+*/

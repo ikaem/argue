@@ -36,7 +36,7 @@ const UserContextProvider = ({children}) => {
         renewToken();
         const timeoutId = setTimeout(() => {
             setRenewTokenTrigger(prevTrigger => prevTrigger + 1);
-        }, 400000);
+        }, 800*1000);
         return () => clearTimeout(timeoutId);
     }, [setLoggedUser, renewTokenTrigger]);
 

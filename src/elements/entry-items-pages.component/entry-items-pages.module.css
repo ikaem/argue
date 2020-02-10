@@ -1,0 +1,12 @@
+.pages {
+    display: flex;
+    justify-content: center;
+    border-top: 1px solid black;
+}
+.activePage {
+    font-weight: bold;
+}
+.postsPages p, li {
+    margin: 0 10px;
+    cursor: pointer;
+}
