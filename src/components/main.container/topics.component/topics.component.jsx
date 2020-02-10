@@ -4,7 +4,7 @@ import classes from "./topics.module.css";
 
 const Topics = (props) => {
     return (
-    <section id="topics" className="topics">
+    <section id="topics" className={classes.topics}>
         <h2>Popular Topics</h2>
         <ul className={classes.topicsList}>
             <li>#Topic</li>

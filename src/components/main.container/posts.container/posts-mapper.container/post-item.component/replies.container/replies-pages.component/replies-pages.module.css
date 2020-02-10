@@ -1,0 +1,13 @@
+.repliesPages {
+    display: flex;
+    justify-content: center;
+    border-top: 1px solid rgb(73, 73, 73);
+
+}
+.activeRepliesPage {
+    font-weight: bold;
+}
+.repliesPages p, li {
+    margin: 0 10px;
+    cursor: pointer;
+}

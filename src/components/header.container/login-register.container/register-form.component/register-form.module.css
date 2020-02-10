@@ -1,0 +1,5 @@
+.registerForm div{
+    display: flex;
+    justify-content: space-between;
+}
+.registerNameInput {}

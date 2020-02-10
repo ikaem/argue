@@ -1,0 +1,8 @@
+.topicsList {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+.topics li {
+    margin: 0 2px;
+}

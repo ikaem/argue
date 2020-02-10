@@ -1,0 +1,11 @@
+.newReplyForm {
+    display: flex;
+    flex-direction: column;
+}
+.newReplyButtons {
+    display: flex;
+    justify-content: flex-end;
+}
+.pushMarginRightButton {
+    margin-right: auto;
+}

@@ -1,0 +1,6 @@
+.loginRegister {
+    grid-column: 1 / 4;
+    grid-row: 2;
+    margin: 0 auto;
+    width: 300px;
+}

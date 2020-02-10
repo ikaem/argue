@@ -1,8 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 
 import classes from "./reply-actual.module.css";
+import { UserContext } from "../../../../../../../../../contexts/UserContext";
 
-const ReplyActual = (props) => {
+const ReplyActual = ({reply, editUneditReply, openCloseDeleteReplyBox, isDeleteReplyBoxOpen, deleteReply}) => {
+    const { loggedUser } = useContext(UserContext);
+    const { replyText, replyAuthor, replyDateCreated, replyDateEdited } = reply;
+
     return (
     <article className={classes.replyActual}>
         <img 
@@ -10,20 +14,30 @@ const ReplyActual = (props) => {
             src="https://placeimg.com/69/69/people" 
             alt="reply author avatar"/>
         <div className={classes.replyContent}>
-            <p className={classes.replyDates}>
-                <span>User Replied on 22 Jan 2020</span>
-                <span>| edited 23 Jan 2020</span>
+            <p className={classes.replyAuthorDates}>
+                <span>{replyAuthor}</span>
+                <span> replied on {new Date(replyDateCreated).toDateString().slice(4)}</span>
+                {replyDateEdited && <span> | edited {new Date(replyDateEdited).toDateString().slice(4)}</span>}
             </p>
-            <p className={classes.replyText}>
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sapiente quibusdam autem in eligendi totam, vero asperiores nostrum officiis. Odio voluptates quod corporis ipsam ea unde iusto quae, tempore vero quibusdam.
-            </p>
+            <p className={classes.replyText}>{replyText}</p>
             
             <div className={classes.replyButtons}>
-                <span>Delete Reply?</span>
-                <button class="button">Yes</button>
-                <button class="button">No</button>
-                <button class="button">Delete</button>
-                <button class="button">Reply</button>
+                {isDeleteReplyBoxOpen && <>
+                    <p>Delete Reply?</p>
+                    <button onClick={deleteReply}>Yes</button>
+                    <button
+                        className={classes.pushMarginRightButton}
+                        onClick={openCloseDeleteReplyBox}
+                    >No</button>
+                </>}
+                {!isDeleteReplyBoxOpen && loggedUser.name === replyAuthor &&
+                    <button
+                        className={classes.cancelEditButton}
+                        onClick={openCloseDeleteReplyBox}
+                        >Delete
+                    </button>
+                }
+                {loggedUser.name === replyAuthor && <button onClick={editUneditReply}>Edit</button>}
             </div>
         </div>
     </article>

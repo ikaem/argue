@@ -1,0 +1,15 @@
+.replyActual {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+.replyContent {
+    width: 100%;
+}
+.replyButtons {
+    display: flex;
+    justify-content: flex-end;
+}
+.pushMarginRightButton {
+    margin-right: auto;
+}

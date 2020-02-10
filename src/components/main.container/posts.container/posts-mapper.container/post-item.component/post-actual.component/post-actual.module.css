@@ -1,0 +1,11 @@
+.postActual {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+.postContent {
+    width: 100%;
+}
+.postActions {
+    text-align: right;
+}

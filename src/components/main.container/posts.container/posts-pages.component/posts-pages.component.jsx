@@ -2,15 +2,20 @@ import React from "react";
 
 import classes from "./posts-pages.module.css";
 
-const PostsPages = (props) => {
+const PostsPages = ({pagesArray, currentPage, setCurrentPage}) => {
     return (
     <ul className={classes.postsPages}>
-        <li>Page</li>
-        <li><i class="fa fa-angle-left"></i></li>
-        <li>1</li>
-        <li>2</li>
-        <li>3</li>
-        <li><i class="fa fa-angle-right"></i></li>
+        <p>Page</p>
+        {currentPage > 1 && <li onClick={() => setCurrentPage(currPage => currPage - 1)}><i className="fa fa-angle-left"></i></li>}
+        {pagesArray.map(page => 
+                <li 
+                    key={page} 
+                    onClick={() => setCurrentPage(page)}
+                    className={currentPage === page? classes.activePage: null}
+                    >{page}
+                </li>
+            )}
+        {currentPage < pagesArray.length && <li onClick={() => setCurrentPage(currPage => currPage + 1)}><i className="fa fa-angle-right"></i></li>}
     </ul>
     )
 }

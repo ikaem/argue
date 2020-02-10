@@ -1,13 +1,55 @@
-import React from "react";
+import React, { useState, useContext } from "react";
 
 import classes from "./edit-post.module.css";
+import notify from "../../../../../../utils/notify";
 
 import EditPostForm from "./edit-post-form.component/edit-post-form.component";
 
-const EditPost = (props) => {
+const EditPost = ({post, editUneditPost, setFetchPostsTrigger}) => {
+    const { id, text } = post;
+    const [textForUpdate, setTextForUpdate] = useState(text);
+    const [isCancelEditBoxOpen, setIsCancelEditBoxOpen] = useState(false);
+
+    const openCloseCancelEditBox = () => {
+        setIsCancelEditBoxOpen(isItOpen => !isItOpen);
+    }
+
+    const handleChange = (e) => {
+        setTextForUpdate(e.target.value);
+    }
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            const updateResponse = await fetch(`http://localhost:4000/editpost/${id}`,{
+                method: "put",
+                headers: {
+                    "Content-Type": "application/json",
+                    // authorization: `Bearer ${user.accessToken}`,
+                },
+                body: JSON.stringify({textForUpdate})
+            });
+            const parsedUpdateResponse = await updateResponse.json();
+            if(parsedUpdateResponse.message !== "post updated successfully") throw new Error(parsedUpdateResponse.message);
+            setFetchPostsTrigger(prevTrigger => prevTrigger + 1);
+            editUneditPost();
+            notify(parsedUpdateResponse.message, "success");
+
+        }
+        catch (error) {
+            console.log(error);
+            notify(error.message, "error");
+        }
+    }
     return (
     <>
-        <EditPostForm/>
+        <EditPostForm
+            textForUpdate={textForUpdate}
+            isCancelEditBoxOpen={isCancelEditBoxOpen}
+            openCloseCancelEditBox={openCloseCancelEditBox}
+            editUneditPost={editUneditPost}
+            handleChange={handleChange}
+            handleSubmit={handleSubmit}
+        />
     </>
     )
 }

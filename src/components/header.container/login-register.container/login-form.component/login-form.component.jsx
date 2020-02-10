@@ -7,7 +7,7 @@ const LoginForm = ({
     password, 
     handleChange, 
     handleSubmit,
-    setIsLogin }) => {
+    loginOrRegister }) => {
         
     return (
     <form 
@@ -16,13 +16,13 @@ const LoginForm = ({
         <div className={classes.loginEmailDiv}>
             <label 
                 className={classes.loginEmailLabel}
-                htmlFor="email">Email</label>
+                htmlFor="loginEmail">Email</label>
             <input 
                 required
                 className={classes.loginEmailInput}
                 type="email"
                 name="email"
-                id="email"
+                id="loginEmail"
                 value={email}
                 onChange={handleChange}/>
         </div>
@@ -30,21 +30,22 @@ const LoginForm = ({
         <div className={classes.loginPasswordDiv}>
             <label 
                 className={classes.loginPasswordLabel}
-                htmlFor="password">Password</label>
+                htmlFor="loginPassword">Password</label>
             <input 
                 required
                 className={classes.loginPasswordInput}
                 type="password"
                 name="password"
-                id="password"
+                id="loginPassword"
                 value={password}
                 onChange={handleChange}/>
         </div>
 
         <div className={classes.loginButtons}>
             <button 
+                type="button"
                 className={classes.buttonRegisterInstead}
-                onClick={() => setIsLogin(false)}>Register Instead?</button>
+                onClick={loginOrRegister}>Register Instead?</button>
             <button 
                 className={classes.loginButton}
                 type="submit">Login</button>

@@ -1,0 +1,11 @@
+.editReplyForm {
+    display: flex;
+    flex-direction: column;
+}
+.editReplyButtons {
+    display: flex;
+    justify-content: flex-end;
+}
+.pushMarginRightButton {
+    margin-right: auto;
+}

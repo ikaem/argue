@@ -2,7 +2,14 @@ import React from "react";
 
 import classes from "./register-form.module.css";
 
-const RegisterForm = ({ name, email, password, repeatPassword, handleChange, handleSubmit, setIsLogin }) => {
+const RegisterForm = ({ 
+    name, 
+    email, 
+    password, 
+    repeatPassword, 
+    handleChange, 
+    handleSubmit, 
+    loginOrRegister }) => {
 
     return (
     <form 
@@ -24,13 +31,13 @@ const RegisterForm = ({ name, email, password, repeatPassword, handleChange, han
         <div className={classes.registerEmailDiv}>
             <label 
                 className={classes.registerEmailLabel}
-                htmlFor="email">Email</label>
+                htmlFor="registerEmail">Email</label>
             <input 
                 required
                 className={classes.registerEmailInput}
                 type="email"
                 name="email"
-                id="email"
+                id="registerEmail"
                 value={email}
                 onChange={handleChange}/>
         </div>
@@ -38,13 +45,13 @@ const RegisterForm = ({ name, email, password, repeatPassword, handleChange, han
         <div className={classes.registerPasswordDiv}>
             <label 
                 className={classes.registerPasswordLabel}
-                htmlFor="password">Password</label>
+                htmlFor="registerPassword">Password</label>
             <input 
                 required
                 className={classes.registerPasswordInput}
                 type="password"
                 name="password"
-                id="password"
+                id="registerPassword"
                 value={password}
                 onChange={handleChange}/>
         </div>
@@ -66,7 +73,7 @@ const RegisterForm = ({ name, email, password, repeatPassword, handleChange, han
         <div className={classes.registerButtons}>
             <button 
                 className={classes.buttonLoginInstead}
-                onClick={() => setIsLogin(true)}>Login Instead?</button>
+                onClick={loginOrRegister}>Login Instead?</button>
             <button 
                 className={classes.registerButton}
                 type="submit">Register</button>

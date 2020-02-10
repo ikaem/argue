@@ -1,0 +1,11 @@
+.newPostForm {
+    display: flex;
+    flex-direction: column;
+}
+.newPostButtons {
+    display: flex;
+    justify-content: flex-end;
+}
+.pushMarginRightButton {
+    margin-right: auto;
+}
