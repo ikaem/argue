@@ -1,0 +1,15 @@
+.entryItemActual {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+.entryItemContent {
+    width: 100%;
+}
+.entryItemButtons {
+    display: flex;
+    justify-content: flex-end;
+}
+.pushMarginRightButton {
+    margin-right: auto;
+}

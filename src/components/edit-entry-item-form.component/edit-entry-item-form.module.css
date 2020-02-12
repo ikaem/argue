@@ -1,0 +1,11 @@
+.editEntryItemForm {
+    display: flex;
+    flex-direction: column;
+}
+.editEntryItemButtons {
+    display: flex;
+    justify-content: flex-end;
+}
+.pushMarginRightButton {
+    margin-right: auto;
+}

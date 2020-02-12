@@ -1,20 +1,25 @@
-import React from "react";
+import React, { useContext } from "react";
 
 import classes from "./header.module.css";
+import { UserContext } from "../../contexts/UserContext";
 
-import Search from "./search.component/search.component";
-import LogoNav from "./logo-nav.component/logo-nav.component";
-import LoginRegister from "./login-register.container/login-register.container";
-import LoggedProfile from "./logged-profile.component/logged-profile.component";
+import LoginRegister from "../../containers/login-register.container/login-register.container";
+import LoggedProfile from "../../containers/logged-profile.container/logged-profile.container";
+import LogoNav from "../logo-nav.component/logo-nav.component";
+import Search from "../../containers/search.container/search.container";
 
 const Header = (props) => {
+    const { loggedUser } = useContext(UserContext);
     return (
     <header className={`grid ${classes.header}`}>
-        <LoginRegister/>
-        <LoggedProfile/>
+        {!loggedUser.id? (
+            <LoginRegister/>):(
+            <LoggedProfile/>
+        )}
         <LogoNav/>
         <Search/>
     </header>
     )
 }
+
 export default Header;

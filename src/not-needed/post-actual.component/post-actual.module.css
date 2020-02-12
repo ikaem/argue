@@ -1,0 +1,15 @@
+.postActual {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+.postContent {
+    width: 100%;
+}
+.postButtons {
+    display: flex;
+    justify-content: flex-end;
+}
+.pushMarginRightButton {
+    margin-right: auto;
+}

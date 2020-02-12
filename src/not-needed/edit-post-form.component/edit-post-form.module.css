@@ -1,0 +1,11 @@
+.editPostForm {
+    display: flex;
+    flex-direction: column;
+}
+.editPostButtons {
+    display: flex;
+    justify-content: flex-end;
+}
+.pushMarginRightButton {
+    margin-right: auto;
+}
