@@ -9,7 +9,8 @@ const UserContextProvider = ({children}) => {
 
     const renewToken = async () => {
         try {
-            const renewTokenResponse = await fetch(`http://localhost:4000/renewaccesstoken`, {
+            // const renewTokenResponse = await fetch(`http://localhost:4000/renewaccesstoken`, {
+            const renewTokenResponse = await fetch(`https://secure-brook-13170.herokuapp.com/renewaccesstoken`, {
                 method: "post",
                 credentials: "include",
                 headers: {

@@ -11,7 +11,6 @@ const notify = (message, type) => {
         closeOnClick: true,
         pauseOnHover: true,
         className: "toast-notify",
-        position: "top-center",
         });
 }
 

@@ -1,7 +1,5 @@
 import React from "react";
 
-import classes from "./reply-show-replies.module.css";
-
 const ReplyShowReplies = ({openCloseReplies, name, author}) => {
     return(
     <>
